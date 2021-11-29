@@ -18,7 +18,7 @@ O projeto original implementado pela professora você pode encontrar
 
 ## Executar DynamoDB Local: 
 
-Nota: Necessário já ter umaconta na AWS - Amazon Web Services
+Nota: Necessário já ter uma conta na AWS - Amazon Web Services
 
 -AWS CLI instalação: 
 * https://docs.aws.amazon.com/pt_br/cli/latest/userguide/getting-started-install.html
@@ -32,11 +32,10 @@ Nota: Necessário já ter umaconta na AWS - Amazon Web Services
 -Navegue no terminal até a pasta em que o jar está baixado e execute: 
 > $ java -Djava.library.path=./DynamoDBLocal_lib -jar DynamoDBLocal.jar -sharedDb
 
--Execute esse comando para definir e visualizar rapidamente as credenciais,
-a região e o formato de saída. O exemplo a seguir mostra valores de amostra.
+-De posse das suas chaves de acesso, configure suas credenciais com o seguinte comando abaixo:
 ```shell script
 $ aws configure
-
+  << exemplo para ilustração >>
   AWS Access Key ID [None]: AKIAIOSFODNN7EXAMPLE
   AWS Secret Access Key [None]: wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY
   Default region name [None]: us-west-2
