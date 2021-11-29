@@ -1,5 +1,10 @@
-
 # API de Gerenciamento de Herois com Spring Web Flux
+
+API desenvolvida durante o curso **Construindo uma API Rest de consulta de cidades do Brasil do zero até a produção**, ministrado
+pelo professor <a href="https://www.linkedin.com/in/kamila-santos-oliveira/" target="_blank">Kamila Santos</a>.
+
+O projeto original implementado pela professora você pode encontrar
+<a href="https://github.com/Kamilahsantos/Heroes-SpringWebflux-API" target="_blank">clicando aqui.</a>
 
 ## Stack utilizada
 
