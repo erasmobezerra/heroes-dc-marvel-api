@@ -2,39 +2,51 @@ package com.digitalinnovation.livecoding.service;
 
 import com.digitalinnovation.livecoding.document.Heroes;
 import com.digitalinnovation.livecoding.repository.HeroesRepository;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.ResponseStatus;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
+import java.util.Optional;
+
 
 @Service
+@Slf4j
 public class HeroesService {
 
-    @Autowired
     private final HeroesRepository heroesRepository;
 
-    // Ponto de injeção de dependências. O Spring (não a classe HeroesService) se encarrega de instanciar HeroesRepository
+    // Ponto de injeção de dependências. O Spring se encarrega de instanciar HeroesRepository
     public HeroesService(HeroesRepository heroesRepository) {
         this.heroesRepository = heroesRepository;
     }
 
     // Métodos padrões do Repository do DynamoDB
+    @ResponseStatus(HttpStatus.OK)
     public Flux<Heroes> findAll() {
+        log.info("requesting the list off all heroes");
         return Flux.fromIterable(this.heroesRepository.findAll());
     }
 
-    public Mono<Heroes> findByIdHero(String id) {
-        return Mono.justOrEmpty(this.heroesRepository.findById(id));
+    public ResponseEntity<Mono<Heroes>> findByIdHero(String id) {
+        log.info("Requesting the hero with id {}", id);
+        Optional<Heroes> optional = this.heroesRepository.findById(id);
+        return optional.map(heroes -> ResponseEntity.ok().body(Mono.justOrEmpty(heroes)))
+                .orElseGet(() -> ResponseEntity.notFound().build());
     }
 
     public Mono<Heroes> save(Heroes heroes) {
+        log.info("A new Hero was Created");
         return Mono.justOrEmpty(this.heroesRepository.save(heroes));
     }
 
-    public Mono<Boolean> deletebyIDHero(String id) {
+    public Mono<HttpStatus> deletebyIDHero(String id) {
+        log.info("Deleting the hero with id {}", id);
         heroesRepository.deleteById(id);
-        return Mono.just(true);
+        return Mono.just(HttpStatus.NOT_FOUND);
     }
 
 }
