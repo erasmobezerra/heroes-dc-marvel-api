@@ -29,7 +29,7 @@ Nota: Necessário já ter uma conta na AWS - Amazon Web Services
 -Criar um usuário do IAM de administração:
 * https://docs.aws.amazon.com/pt_br/mediapackage/latest/ug/setting-up-create-iam-user.html
 
--Navegue no terminal até a pasta em que o jar está baixado e execute: 
+-Abra o terminal clearno diretório do jar do DynamoDB e execute: 
 > $ java -Djava.library.path=./DynamoDBLocal_lib -jar DynamoDBLocal.jar -sharedDb
 
 -De posse das suas chaves de acesso, configure suas credenciais com o seguinte comando abaixo:
