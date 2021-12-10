@@ -29,7 +29,16 @@ public class HeroesApiApplicationTests {
     @Test
     public void getOneHeroeById() {
         // Verifica se retorna status 200 ok caso insira um ID existente
-        webTestClient.get().uri(HEROES_ENDPOINT_LOCAL.concat("/{id}"), "3")
+        webTestClient.get().uri(HEROES_ENDPOINT_LOCAL.concat("/{id}"), "2")
+                .exchange()
+                .expectStatus().isOk()
+                .expectBody();
+    }
+
+    @Test
+    public void getAllHeroes() {
+        // Verifica se retorna status 200 ok caso insira um ID existente
+        webTestClient.get().uri(HEROES_ENDPOINT_LOCAL)
                 .exchange()
                 .expectStatus().isOk()
                 .expectBody();
@@ -38,7 +47,7 @@ public class HeroesApiApplicationTests {
     @Test
     public void getOneHeronotFound() {
         // Verificar se, procurar um ID inexistente no DynamoDB, retorna status NOTFOUND
-        webTestClient.get().uri(HEROES_ENDPOINT_LOCAL.concat("/{id}"), "10")
+        webTestClient.get().uri(HEROES_ENDPOINT_LOCAL.concat("/{id}"), "19")
                 .exchange()
                 .expectStatus().isNotFound();
     }
@@ -46,7 +55,7 @@ public class HeroesApiApplicationTests {
     @Test
     public void deleteHero() {
         // Verifica se, ao deletar um ID existente, retorna status NOTFOUND
-        webTestClient.delete().uri(HEROES_ENDPOINT_LOCAL.concat("/{id}"), "2")
+        webTestClient.delete().uri(HEROES_ENDPOINT_LOCAL.concat("/{id}"), "5")
                 .accept(MediaType.APPLICATION_JSON)
                 .exchange()
                 .expectStatus().isNotFound()
