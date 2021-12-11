@@ -8,31 +8,32 @@ O projeto original implementado pela professora você pode encontrar
 
 ## Stack utilizada
 
-  * Java8
-  * spring webflux
-  * Spring data
-  * dynamodb
-  * junit
-  * sl4j
-  * reactor
+  * Java 8
+  * Spring Webflux
+  * Spring Data
+  * Dynamodb
+  * Junit e WebTestClient
+  * Sl4j
+  * Reactor
 
-## Executar DynamoDB Local: 
+## DynamoDB Local
 
-Nota: Necessário já ter uma conta na AWS - Amazon Web Services
+### Instalação e configuração:
+* Necessário já ter uma conta na AWS - Amazon Web Services
 
--AWS CLI instalação: 
-* https://docs.aws.amazon.com/pt_br/cli/latest/userguide/getting-started-install.html
+* <a href="https://docs.aws.amazon.com/pt_br/cli/latest/userguide/getting-started-install.html"> Instalar AWS CLI</a>
 
--Gerar ID de chave de acesso e Chave de acesso secreta:
-* https://docs.aws.amazon.com/pt_br/cli/latest/userguide/cli-configure-quickstart.html#cli-configure-quickstart
+* <a href="https://docs.aws.amazon.com/pt_br/cli/latest/userguide/cli-configure-quickstart.html#cli-configure-quickstart"> Gerar ID de Chave de Acesso e Chave de Acesso secreta:</a>
 
--Criar um usuário do IAM de administração:
-* https://docs.aws.amazon.com/pt_br/mediapackage/latest/ug/setting-up-create-iam-user.html
+* <a href="https://docs.aws.amazon.com/pt_br/mediapackage/latest/ug/setting-up-create-iam-user.html"> Criar um usuário do IAM de administração</a>
 
--Abra o terminal clearno diretório do jar do DynamoDB e execute: 
+* <a href="https://docs.aws.amazon.com/pt_br/amazondynamodb/latest/developerguide/DynamoDBLocal.DownloadingAndRunning.html"> Download do DynamoDB </a>
+
+### Executando o servidor:
+Abra o terminal no diretório aonde você baixou o jar do DynamoDB e execute: 
 > $ java -Djava.library.path=./DynamoDBLocal_lib -jar DynamoDBLocal.jar -sharedDb
 
--De posse das suas chaves de acesso, configure suas credenciais com o seguinte comando abaixo:
+De posse das suas chaves de acesso, configure suas credenciais com o seguinte comando abaixo:
 ```shell script
 $ aws configure
   << exemplo para ilustração >>

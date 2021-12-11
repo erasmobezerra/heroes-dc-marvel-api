@@ -23,6 +23,7 @@ public class HeroesController {
     @Autowired // Ponto de injeção de dependência.
     HeroesService heroesService;
 
+    @ResponseStatus(HttpStatus.OK)
     @GetMapping(HEROES_ENDPOINT_LOCAL)
     public Flux<Heroes> getAllItems() {
         return heroesService.findAll();
@@ -41,7 +42,7 @@ public class HeroesController {
 
     @DeleteMapping(HEROES_ENDPOINT_LOCAL + "/{id}")
     @ResponseStatus(code = HttpStatus.NOT_FOUND)
-    public Mono<HttpStatus> deletebyIDHero(@PathVariable String id) {
-        return heroesService.deletebyIDHero(id);
+    public Mono<HttpStatus> deleteByIDHero(@PathVariable String id) {
+        return heroesService.deleteByIDHero(id);
     }
 }

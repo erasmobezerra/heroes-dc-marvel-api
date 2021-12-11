@@ -3,6 +3,7 @@ package com.digitalinnovation.livecoding.service;
 import com.digitalinnovation.livecoding.document.Heroes;
 import com.digitalinnovation.livecoding.repository.HeroesRepository;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
@@ -17,15 +18,9 @@ import java.util.Optional;
 @Slf4j
 public class HeroesService {
 
-    private final HeroesRepository heroesRepository;
+    @Autowired
+    private HeroesRepository heroesRepository;
 
-    // Ponto de injeção de dependências. O Spring se encarrega de instanciar HeroesRepository
-    public HeroesService(HeroesRepository heroesRepository) {
-        this.heroesRepository = heroesRepository;
-    }
-
-    // Métodos padrões do Repository do DynamoDB
-    @ResponseStatus(HttpStatus.OK)
     public Flux<Heroes> findAll() {
         log.info("requesting the list off all heroes");
         return Flux.fromIterable(this.heroesRepository.findAll());
@@ -35,7 +30,7 @@ public class HeroesService {
         log.info("Requesting the hero with id {}", id);
         Optional<Heroes> optional = this.heroesRepository.findById(id);
         return optional.map(heroes -> ResponseEntity.ok().body(Mono.justOrEmpty(heroes)))
-                .orElseGet(() -> ResponseEntity.notFound().build());
+                       .orElseGet(() -> ResponseEntity.notFound().build());
     }
 
     public Mono<Heroes> save(Heroes heroes) {
@@ -43,7 +38,7 @@ public class HeroesService {
         return Mono.justOrEmpty(this.heroesRepository.save(heroes));
     }
 
-    public Mono<HttpStatus> deletebyIDHero(String id) {
+    public Mono<HttpStatus> deleteByIDHero(String id) {
         log.info("Deleting the hero with id {}", id);
         heroesRepository.deleteById(id);
         return Mono.just(HttpStatus.NOT_FOUND);
