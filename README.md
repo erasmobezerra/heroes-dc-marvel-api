@@ -23,9 +23,9 @@ O projeto original implementado pela professora você pode encontrar
 
 * <a href="https://docs.aws.amazon.com/pt_br/cli/latest/userguide/getting-started-install.html"> Instalar AWS CLI</a>
 
-* <a href="https://docs.aws.amazon.com/pt_br/cli/latest/userguide/cli-configure-quickstart.html#cli-configure-quickstart"> Gerar ID de Chave de Acesso e Chave de Acesso secreta:</a>
+* <a href="https://docs.aws.amazon.com/pt_br/mediapackage/latest/ug/setting-up-create-iam-user.html"> Recomendado: Criar um usuário do IAM de administração</a>
 
-* <a href="https://docs.aws.amazon.com/pt_br/mediapackage/latest/ug/setting-up-create-iam-user.html"> Criar um usuário do IAM de administração</a>
+* <a href="https://docs.aws.amazon.com/pt_br/cli/latest/userguide/cli-configure-quickstart.html#cli-configure-quickstart"> Gerar ID de Chave de Acesso e Chave de Acesso secreta:</a>
 
 * <a href="https://docs.aws.amazon.com/pt_br/amazondynamodb/latest/developerguide/DynamoDBLocal.DownloadingAndRunning.html"> Download do DynamoDB </a>
 
